@@ -42,10 +42,15 @@ next-env.d.ts
 
 # API Keys and sensitive files
 src/data/apiKeys.js
+src/data/apiKeys.json
 apiKeys.js
 *.key
 *.pem
 *.p12
+
+# Sensitive source files
+src/lib/supabaseServer.js
+src/lib/apiKeysStore.js
 
 # Environment variables
 .env

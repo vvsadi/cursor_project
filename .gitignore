@@ -49,7 +49,6 @@ apiKeys.js
 *.p12
 
 # Sensitive source files
-src/lib/supabaseServer.js
 src/lib/apiKeysStore.js
 
 # Environment variables

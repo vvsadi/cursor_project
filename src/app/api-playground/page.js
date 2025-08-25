@@ -142,7 +142,7 @@ export default function ApiPlayground() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
-                  Click "Validate API Key" to test access
+                  Click &quot;Validate API Key&quot; to test access
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>

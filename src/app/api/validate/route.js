@@ -32,7 +32,9 @@ export async function POST(request) {
     // Basic validation - check if API key exists and has proper format
     if (!apiKey || typeof apiKey !== 'string' || apiKey.trim().length === 0) {
       return new Response(JSON.stringify({ 
-        error: 'Invalid API key format' 
+        error: 'Invalid API key format',
+        message: 'Invalid API key',
+        status: 'error'
       }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' }
@@ -51,7 +53,7 @@ export async function POST(request) {
       
       if (isValidApiKey) {
         return new Response(JSON.stringify({ 
-          message: 'Valid API Key, /protected can be accessed',
+          message: 'Validation successful',
           status: 'success'
         }), {
           status: 200,
@@ -60,6 +62,7 @@ export async function POST(request) {
       } else {
         return new Response(JSON.stringify({ 
           error: 'Invalid API Key',
+          message: 'Invalid API key',
           status: 'error'
         }), {
           status: 401,
@@ -81,6 +84,7 @@ export async function POST(request) {
       console.error("Database query error:", error);
       return new Response(JSON.stringify({ 
         error: 'Database error occurred',
+        message: 'Invalid API key',
         status: 'error'
       }), {
         status: 500,
@@ -91,7 +95,7 @@ export async function POST(request) {
     if (data && data.value === trimmedApiKey) {
       console.log("API key validated successfully:", data.name);
       return new Response(JSON.stringify({ 
-        message: 'Valid API Key, /protected can be accessed',
+        message: 'Validation successful',
         status: 'success',
         keyName: data.name
       }), {
@@ -102,6 +106,7 @@ export async function POST(request) {
       console.log("API key not found in database");
       return new Response(JSON.stringify({ 
         error: 'Invalid API Key',
+        message: 'Invalid API key',
         status: 'error'
       }), {
         status: 401,
@@ -113,6 +118,7 @@ export async function POST(request) {
     console.error("Validation error:", error);
     return new Response(JSON.stringify({ 
       error: 'Invalid request format',
+      message: 'Invalid API key',
       status: 'error'
     }), {
       status: 400,
